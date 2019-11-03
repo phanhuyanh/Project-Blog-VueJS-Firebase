@@ -1,0 +1,184 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: GothamBook;
+    src: url("../font-family/gotham_ssv/Gotham-Book.otf") format("opentype");
+}
+
+body {
+   font-family: GothamBook;
+}
+
+.-flex {
+    display: flex;
+}
+
+.-full-width {
+    width: 100%;
+}
+
+.-full-height {
+    height: 100%;
+}
+
+.btn {
+    padding: .375rem .75rem;
+    border-radius: .25rem;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    cursor: pointer;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    display: inline-block;
+    user-select: none;
+    border: 1px solid transparent;
+}
+
+.btn-dark {
+    border-color: #343a40;
+    color: #fff;
+    background-color: #343a40;
+}
+
+.btn-dark:hover {
+    color: #fff;
+}
+
+.btn-success {
+    border-color: #28a745;
+    background-color: #28a745;
+    color: #fff;
+}
+
+.btn-success:hover {
+    background: #008000b5;
+}
+
+
+.btn-secondary {
+    border-color: #6c757d;
+    background-color: #6c757d;
+    color: #fff;
+}
+
+.btn-secondary:hover {
+    background: #6c757dcc;
+}
+
+.btn-primary {
+    border-color: #007bff;
+    background-color: #007bff;
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background: #007bffb3;
+}
+
+
+.btn-danger {
+    border-color: #dc3545;
+    background-color: #dc3545;
+    color: #fff;
+}
+
+.btn-danger:hover {
+    background: #dc3545cc;
+}
+
+
+.btn-warning {
+    border-color: #ffc107;
+    background-color: #ffc107;
+    color: #fff;
+}
+
+.btn-warning:hover {
+    background: #ffc107e0;
+}
+
+.btn-info {
+    border-color: #17a2b8;
+    background-color: #17a2b8;
+    color: #fff;
+}
+
+.btn-info:hover {
+    background: #17a2b8db;
+}
+
+a {
+    text-decoration: none;
+    color: #181818;
+}
+
+.-grid {
+    display: grid;
+}
+
+.-block {
+    display: block;
+}
+
+.-center-y {
+    align-items: center;
+}
+
+.-center-x {
+    justify-content: center;
+}
+
+.-text-center {
+    text-align: center;
+}
+
+.form-group {
+    border: 1px solid #ccc;
+    padding: 8px 15px;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    
+}
+
+.form-control {
+    background: none;
+    border: none;
+    outline: 0;
+    width: 100%;
+}
+
+.-flex-direction-col {
+    flex-direction: column;
+}
+
+.text-overflow {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.inl-block {
+    display: inline-block;
+}
+
+.mar-b-15 {
+    margin-bottom: 15px;
+}
+
+.mar-r-5 {
+    margin-right: 5px;
+}
+
+span {
+    display: inline-block;
+}
+
+code {
+    color: #f66;
+}
