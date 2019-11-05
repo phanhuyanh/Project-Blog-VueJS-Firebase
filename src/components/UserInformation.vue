@@ -58,8 +58,6 @@ export default {
 <style scoped>
 #user-information {
   background: #f5f6f7;
-  height: 100vh;
-  overflow: hidden;
 }
 
 .user-info {

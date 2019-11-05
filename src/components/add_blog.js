@@ -4,37 +4,41 @@ import firebase from 'firebase';
 
 export default {
   data: () => ({
-    input: ""
+    input: "",
+    title: ''
   }),
   created() {
-      firebase.firestore().collection("blogs").get().then((querySnapshot) => {
-        querySnapshot.forEach((doc) => {
-            //console.log(`${doc.id} => ${doc.data()}`, doc.data().description);
-            this.input = doc.data().description;
-        });
-    });
-    var t = firebase.firestore().collection("blogs").orderBy('createdAt')
-
-    console.log("t" , t)
   },
   computed: {
     compiledMarkdown: function() {
-      return marked(this.input, { sanitize: true });
+      return marked(this.input || '', { sanitize: true });
     }
   },
   methods: {
     async postBlog() {
         var key = await generateKey();
-
+        var user = firebase.auth().currentUser;
         var db = firebase.firestore();
-
-        db.collection("blogs").add({
+        
+        db.collection("blogs").doc(user.uid).set({
             id: key,
             description: this.input,
-            timestamp: Date.now()
-        }).then(() => console.log("thanh conf"))
+            timestamp: Date.now(),
+            title: this.title
+        }).then(() => console.log("thanh cong"))
         .catch(() =>console.log('that bai'))
         //console.log(this.input, typeof this.input, this.input.length)
+        
+      //  console.log("title: " + this.title)
+      //  console.log("description: " + this.input)
+
+      //  //console.log("user: ", user)
+      //  console.log("user ID: "+ user.uid)
+      //  console.log("display name: " + user.displayName)
+      //  console.log("user email: " + user.email)
+      //  console.log("user photo: " + user.photoURL)
+      //  console.log("key: " + key)
+       
     }
   }
 };

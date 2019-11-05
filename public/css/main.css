@@ -139,7 +139,6 @@ a {
 }
 
 .form-group {
-    border: 1px solid #ccc;
     padding: 8px 15px;
     border-radius: 4px;
     margin-bottom: 15px;
@@ -151,6 +150,10 @@ a {
     border: none;
     outline: 0;
     width: 100%;
+    border: 1px solid #ccc;
+    padding: 8px 15px;
+    border-radius: 4px;
+    font-size: 1rem;
 }
 
 .-flex-direction-col {
@@ -181,4 +184,16 @@ span {
 
 code {
     color: #f66;
+}
+
+.overflow-x-auto {
+    overflow-x: auto;
+}
+
+.overflow-t-auto {
+    overflow-y: auto;
+}
+
+pre {
+    background: #cccccc4d;
 }

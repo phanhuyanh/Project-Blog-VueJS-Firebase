@@ -1,8 +1,12 @@
 <template>
   <div class="add-blog">
+    <div class="title form-group">
+      <label for="">Title:</label>
+      <input type="text" class="form-control" v-model="title">
+    </div>
     <div id="editor">
       <textarea  v-model="input" placeholder="you can write markdown"></textarea>
-      <div v-html="compiledMarkdown"></div>
+      <div v-html="compiledMarkdown" class="preview overflow-y-auto"></div>
     </div>
     <div class="post-blog -flex -center-x">
         <button class="btn btn-primary" @click="postBlog()">Post Blog</button>
@@ -14,17 +18,20 @@
 
 <style scoped>
 .add-blog {
-    background: #fff;
-    height: 700px;
+    height: 100%;
+}
+
+.add-blog .title {
+  margin-bottom: 15px;
 }
 
 #editor {
-    height: 100%;
+    height: 450px;
 }
 
 textarea, #editor div {
   display: inline-block;
-  width: 49%;
+  width: 50%;
   height: 100%;
   vertical-align: top;
   box-sizing: border-box;
@@ -48,5 +55,10 @@ textarea {
 .post-blog {
     margin-top: 15px;
     justify-content: flex-end;
+}
+
+.preview {
+  line-height: 45px;
+  background: #fff;
 }
 </style>

@@ -28,8 +28,8 @@ export default {
         if(user) {
             this.img_src = user.photoURL;
         }
-        this.width = this.p_width;
-        this.height = this.p_height;
+        this.width = this.p_width || 30;
+        this.height = this.p_height || 30;
     }
 }
 </script>

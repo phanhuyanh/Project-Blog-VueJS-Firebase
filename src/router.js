@@ -11,6 +11,7 @@ import UserInformation from './components/UserInformation.vue';
 import MyBlog from './components/MyBlog.vue';
 import MyProfile from './components/MyProfile.vue';
 import AddBlog from './components/AddBlog.vue';
+import Topic from './components/Topic.vue';
 
 Vue.use(VueRouter);
 
@@ -80,6 +81,12 @@ export default new VueRouter({
                     component: AddBlog
                 }
             ]
+        },
+        {
+            path: 'topic/:id',
+            name: 'topic',
+            component: Topic
+
         }
     ],
     mode: 'history'
