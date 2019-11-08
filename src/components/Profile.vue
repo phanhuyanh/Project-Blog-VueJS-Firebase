@@ -37,6 +37,7 @@
           <ul>
               <li><router-link to="/user-information">My Profile</router-link></li>
               <li><router-link to="/user-information/my-blog">My Blog</router-link></li>
+              <li><router-link to="/user-information/add-blog">Add Blog</router-link></li>
           </ul>
       </div>
     </div>

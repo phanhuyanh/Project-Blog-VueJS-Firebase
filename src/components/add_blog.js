@@ -16,29 +16,23 @@ export default {
   },
   methods: {
     async postBlog() {
-        var key = await generateKey();
         var user = firebase.auth().currentUser;
-        var db = firebase.firestore();
-        
-        db.collection("blogs").doc(user.uid).set({
+         var key = await generateKey();
+
+         var db = firebase.firestore();
+
+        db.collection("blogs").doc(user.uid).collection("blog").doc(key).set({
             id: key,
             description: this.input,
             timestamp: Date.now(),
             title: this.title
-        }).then(() => console.log("thanh cong"))
-        .catch(() =>console.log('that bai'))
-        //console.log(this.input, typeof this.input, this.input.length)
+        }).then(() => {
+          alert('thanh cong');
+          this.input = '';
+          this.title = '';
+        })
+        .catch(() => alert('that bai'))
         
-      //  console.log("title: " + this.title)
-      //  console.log("description: " + this.input)
-
-      //  //console.log("user: ", user)
-      //  console.log("user ID: "+ user.uid)
-      //  console.log("display name: " + user.displayName)
-      //  console.log("user email: " + user.email)
-      //  console.log("user photo: " + user.photoURL)
-      //  console.log("key: " + key)
-       
     }
   }
 };

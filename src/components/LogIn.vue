@@ -22,7 +22,7 @@ export default {
       firebase
         .auth()
         .signOut()
-        .then(() => this.$router.replace("sign-in"))
+        .then(() => this.$router.push("/sign-in"))
         .catch(function() {
           // An error happened.
         });

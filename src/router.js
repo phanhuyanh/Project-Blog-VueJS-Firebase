@@ -83,7 +83,7 @@ export default new VueRouter({
             ]
         },
         {
-            path: 'topic/:id',
+            path: '/topic/:id',
             name: 'topic',
             component: Topic
 
