@@ -64,6 +64,9 @@ export default new VueRouter({
         {
             path: '/user-information',
             component: UserInformation,
+            meta: {
+                requireAuth: true
+            },
             children: [
                 {
                     path: '',

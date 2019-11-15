@@ -33,7 +33,7 @@
           <i class="fas fa-chevron-down" :class="{'rotate-90': showInfo}"></i>
         </span>
       </div>
-      <div class="view-info" v-show="showInfo" v-if="me">
+      <div class="view-info" v-show="showInfo" v-if="me" @blur="showInfo = false">
           <ul>
               <li><router-link to="/user-information">My Profile</router-link></li>
               <li><router-link to="/user-information/my-blog">My Blog</router-link></li>

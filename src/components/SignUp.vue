@@ -64,7 +64,7 @@ export default {
       firebase
         .auth()
         .createUserWithEmailAndPassword(this.email, this.password)
-        .then(() => this.$router.replace("dashboard"))
+        .then(() => this.$router.push("/"))
         .catch(() => alert("loi dang ky"));
     },
     signUpGoogle() {

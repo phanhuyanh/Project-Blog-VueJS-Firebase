@@ -4,7 +4,7 @@
         <router-link  :to="{ name: 'topic', params: { id: id }}" class="-block -full-width -full-height">
           <div class="title">{{ title }}</div>
           <div class="description">{{ description }}</div>
-          <div class="creat-at">{{ timestamp }}</div>
+          <div class="creat-at">{{dateFormat(timestamp) }}</div>
         </router-link>
       </div>
     <!-- Blog -->
@@ -19,6 +19,11 @@ export default {
         timestamp: Number
     },
     methods: {
+      dateFormat(timestamp) {
+        var date = new Date(timestamp);
+
+        return `${date.getDate()}/${date.getMonth()  + 1}/${date.getFullYear()}`
+      }
     }
 
 }

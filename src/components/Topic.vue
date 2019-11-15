@@ -63,4 +63,9 @@ export default {
   line-height: 45px;
   background: #fff;
 }
+
+.preview a {
+  color: #2b2bff;
+;
+}
 </style>

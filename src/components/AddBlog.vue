@@ -1,12 +1,15 @@
 <template>
   <div class="add-blog">
+    <div id="await-post" v-if="isLoading">
+      <loader/>
+    </div>
     <div class="title form-group">
       <label for="">Title:</label>
       <input type="text" class="form-control" v-model="title">
     </div>
     <div id="editor">
       <textarea  v-model="input" placeholder="you can write markdown"></textarea>
-      <div v-html="compiledMarkdown" class="preview overflow-y-auto"></div>
+      <div v-html="compiledMarkdown" class="preview overflow-x-auto"></div>
     </div>
     <div class="post-blog -flex -center-x">
         <button class="btn btn-primary" @click="postBlog()">Post Blog</button>
@@ -46,6 +49,7 @@ textarea {
   font-size: 14px;
   font-family: 'Monaco', courier, monospace;
   padding: 20px;
+  line-height: 28px;
 }
 
 .add-blog p code {
@@ -60,5 +64,23 @@ textarea {
 .preview {
   line-height: 45px;
   background: #fff;
+  word-break: break-all;
+}
+
+.preview a {
+  color: #2b2bff;
+}
+
+#await-post {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #000;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 </style>

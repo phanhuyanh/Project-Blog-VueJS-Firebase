@@ -54,7 +54,7 @@ export default {
       firebase
         .auth()
         .createUserWithEmailAndPassword(this.email, this.password)
-        .then(() => this.$router.replace("dashboard"))
+        .then(() => this.$router.push("/"))
         .catch(() => alert("loi dang ky"));
     },
     signInGoogle() {
@@ -63,7 +63,7 @@ export default {
       firebase
         .auth()
         .signInWithPopup(provider)
-        .then(() => this.$router.replace("dashboard"))
+        .then(() => this.$router.replace("/"))
         .catch(function(error) {
           // Handle Errors here.
           var errorCode = error.code;
@@ -83,7 +83,7 @@ export default {
         .auth()
         .signInWithPopup(provider)
         .then(
-          result => (console.log(result.user), this.$router.replace("dashboard"))
+          result => (console.log(result.user), this.$router.replace("/"))
         )
         .catch(function(error) {
           console.log("loi", error)

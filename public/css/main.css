@@ -184,6 +184,7 @@ span {
 
 code {
     color: #f66;
+    white-space: pre-wrap;
 }
 
 .overflow-x-auto {
@@ -196,4 +197,12 @@ code {
 
 pre {
     background: #cccccc4d;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+p {
+    white-space: pre-wrap;
 }
