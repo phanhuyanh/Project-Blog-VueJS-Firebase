@@ -39,6 +39,7 @@
 
 <script>
 import firebase from 'firebase';
+import store from '../api/store.js';
 
 export default {
   data: () => ({
@@ -63,7 +64,10 @@ export default {
       firebase
         .auth()
         .signInWithPopup(provider)
-        .then(() => this.$router.replace("/"))
+        .then(() => {
+          this.setUser();
+          this.$router.push("/");
+        })
         .catch(function(error) {
           // Handle Errors here.
           var errorCode = error.code;
@@ -82,12 +86,27 @@ export default {
        firebase
         .auth()
         .signInWithPopup(provider)
-        .then(
-          result => (console.log(result.user), this.$router.replace("/"))
-        )
+        .then(() => {
+          this.setUser();
+          this.$router.push("/");
+        })
         .catch(function(error) {
           console.log("loi", error)
         });
+    },
+    setUser() {
+      var user = store.getMyUser();
+
+      //console.log("user provider: ", user.providerData[0])
+
+      var profile = {...user.providerData[0], ...{
+        linkGithub: '',
+        linkLinked: '',
+        id: user.uid
+      }}
+
+      //console.log("u" , u)
+      firebase.firestore().collection('users').doc(user.uid).set(profile);
     }
   }
 };

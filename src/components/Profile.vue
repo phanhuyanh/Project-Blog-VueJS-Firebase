@@ -1,6 +1,6 @@
 <template>
   <div id="profile">
-    <div class="notice" @click="showNotice = !showNotice">
+    <div class="notice" @click="showNotice = !showNotice" v-if="me">
       <span>
         <i class="fas fa-bell"></i>
       </span>
@@ -28,7 +28,7 @@
     </div>
     <div class="view" @click="showInfo = !showInfo">
       <avatar></avatar>
-      <div class="drop-down">
+      <div class="drop-down" v-if="me">
         <span>
           <i class="fas fa-chevron-down" :class="{'rotate-90': showInfo}"></i>
         </span>
@@ -44,24 +44,7 @@
   </div>
 </template>
 
-<script>
-import Avatar from "./Avatar.vue";
-import firebase from 'firebase';
-
-export default {
-  components: {
-    Avatar
-  },
-  data: () => ({
-      showInfo: false,
-      showNotice : false,
-      me: {}
-  }),
-  created() {
-      this.me = firebase.auth().currentUser; 
-  }
-};
-</script>
+<script src="./profile.js"></script>
 
 <style scoped>
 

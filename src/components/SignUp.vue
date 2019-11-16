@@ -81,7 +81,7 @@ export default {
           // ...
           console.log(token, user)
           
-          return this.$router.replace("dashboard")
+          return this.$router.push("/")
         })
         .catch(function(error) {
           // Handle Errors here.

@@ -31,7 +31,7 @@ export default {
   async created() {
     var user = firebase.auth().currentUser;
     var id_topic = this.$route.params.id;
-    console.log(id_topic, user.uid)
+    //console.log(id_topic, user.uid)
     this.topic = await firebase.firestore().collection("blogs").doc(user.uid).collection("blog").doc(id_topic).get().then(data => data.data()).catch(err => err);
 
     //console.log("topic ", topic)

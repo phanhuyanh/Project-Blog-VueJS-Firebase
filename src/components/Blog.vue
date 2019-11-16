@@ -8,6 +8,7 @@
           class="-full-height -full-width"
         />
       </div>
+      -->
       <div class="content-topic">
         <div class="head-topic">
           <avatar></avatar>
