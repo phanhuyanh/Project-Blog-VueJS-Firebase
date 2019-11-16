@@ -15,7 +15,8 @@ import firebase from 'firebase';
 export default {
     props: {
         p_width: String,
-        p_height: String
+        p_height: String,
+        img_prop: String
     },
     data: () => ({
         img_src: "https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?f=y",
@@ -24,8 +25,10 @@ export default {
     }),
     created() {
         var user = firebase.auth().currentUser;
-
-        if(user) {
+        if(this.img_prop) {
+            this.img_src = this.img_prop;
+        }
+        else if(user) {
             this.img_src = user.photoURL;
         }
         this.width = this.p_width || 30;
