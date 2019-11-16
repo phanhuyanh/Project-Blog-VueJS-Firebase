@@ -5,7 +5,7 @@
         <div class="about-me -flex">
             <h1>This is Website for anyone discuss problem</h1>
             <p>See more topic is discussing</p>
-            <a href="#" class="btn btn-dark">See Blog</a>
+            <router-link to="blog/page/1" class="btn btn-dark">See Blog</router-link>
         </div>
         <div class="bgMedia">
             <img src="https://static.wixstatic.com/media/44a8b5374d1c4364a684efdb64db7728.jpg/v1/fill/w_872,h_780,fp_0.50_0.50,q_85,usm_0.66_1.00_0.01/44a8b5374d1c4364a684efdb64db7728.webp" 

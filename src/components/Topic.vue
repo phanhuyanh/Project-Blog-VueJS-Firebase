@@ -59,6 +59,10 @@ export default {
   margin-top: 30px;
 }
 
+.main-topic a {
+  color: #2b2bff;
+}
+
 .preview {
   line-height: 45px;
   background: #fff;

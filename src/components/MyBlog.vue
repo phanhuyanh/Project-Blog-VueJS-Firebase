@@ -36,15 +36,6 @@
             <div class="page" v-for="(numPage, index) in createPag" :key="index" :class="{'active': index  == pageCur}" @click="nextPage(index)">
               <div class="-block -text-center -full-width -full-height cursor-pointer">{{ numPage }} </div>
             </div>
-            <!--
-            <div class="page">
-              <div class="-block -text-center -full-width -full-height cursor-pointer">2</div>
-            </div>
-            <div class="page -block -text-center">...</div>
-            <div class="page">
-              <div class="-block -text-center -full-width -full-height cursor-pointer">10</div>
-            </div>
-            -->
           </div>
           <div class="chevron-right cursor-pointer" @click="++page" :style="{'disable': page == max_page}">
             <div class="-full-width -full-height -flex">

@@ -1,13 +1,14 @@
 <template>
   <div class="blog">
     <div class="card">
-      <div class="card-title"><a href="#">{{ blog.title }}</a></div>
-      <div class="description" v-html="compiledMarkdown(blog.description)">
+      <div class="card-title"><router-link :to="`/topic/` + blog.id">{{ blog.title }}</router-link></div>
+      <div class="description">
+        {{ blog.description.slice(0, 200) }}...
       </div>
       <div class="card-creator -flex">
         <div class="tags"></div>
         <div class="creator">
-          <p class="creator-time">{{ blog.timestamp }}</p>
+          <p class="creator-time">{{ blog.timestamp | timeDisplay }}</p>
           <div class="creator-profile -flex -center-y">
             <avatar :img_prop="creator.photoURL"></avatar>
             <div class="creator-name">{{ creator.displayName }}</div>
@@ -30,9 +31,18 @@ export default {
   components: {
     Avatar
   },
+  filters: {
+    timeDisplay: function(timestamp) {
+      var date = new Date(timestamp);
+
+      return `${date.getDate()}/${date.getMonth()  + 1}/${date.getFullYear()}`
+    }
+  },
   data: () => ({
       showOption: false
   }),
+  created() {
+  },
   methods: {
     compiledMarkdown(text) {
       return marked(text || '', { sanitize: true });
@@ -44,7 +54,6 @@ export default {
 <style scoped>
 .blog {
     border-bottom: 1px solid #cacaca75;
-    cursor: pointer;
     padding: 15px 30px;
 }
 
@@ -66,7 +75,7 @@ export default {
   color: #249cf2;
 }
 
-.card .card-description {
+.card .description {
   margin-bottom: 5px;
 }
 

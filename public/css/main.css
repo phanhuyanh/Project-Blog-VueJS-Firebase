@@ -38,6 +38,7 @@ body {
     display: inline-block;
     user-select: none;
     border: 1px solid transparent;
+    outline: 0;
 }
 
 .btn-dark {
@@ -205,4 +206,8 @@ pre {
 
 p {
     white-space: pre-wrap;
+}
+
+.pointer-event {
+    pointer-events: none;
 }

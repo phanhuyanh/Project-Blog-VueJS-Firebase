@@ -2,7 +2,6 @@
   <div id="home">
         <header-layout></header-layout>
         <about></about>
-        <list-blog></list-blog>
         <contact></contact>
         <copy-right></copy-right>
         <back-to-top></back-to-top>
@@ -12,19 +11,17 @@
 <script>
 import HeaderLayout from "./HeaderLayout.vue";
 import About from "./About.vue";
-import ListBlog from './ListBlog.vue';
 import Contact from './Contact.vue';
 import CopyRight from './CopyRight.vue';
 import BackToTop from './BackToTop.vue';
 
 export default {
     components: {
-        HeaderLayout,
-        About,
-        ListBlog,
-        Contact,
-        CopyRight,
-        BackToTop
+      HeaderLayout,
+      About,
+      Contact,
+      CopyRight,
+      BackToTop
     }
 }
 </script>

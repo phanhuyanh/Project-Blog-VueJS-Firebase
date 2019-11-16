@@ -1,6 +1,7 @@
 <template>
   <div id="list-blog">
-    <div class="container">
+    <loader v-if="isLoading"/>
+    <div class="container" v-else>
       <div class="-layout -flex">
         <div class="menu-bar">
           <nav>
@@ -20,18 +21,18 @@
             <router-link class="btn btn-primary" to="/user-information/add-blog">Post Blog</router-link>
           </div>
           <div class="-flex list-blog-info">
-              <p>6 blogs</p>
+              <p>{{ listBlog.length }} blogs</p>
               <search></search>
           </div>
           <div class="-grid main-blog">
             <blog 
-                v-for="([itemBlog, creator]) in listBlog" 
+                v-for="([itemBlog, creator]) in listBlogMaxPage" 
                 :key="itemBlog.id"
                 :blog="itemBlog"
                 :creator="creator"
             ></blog>
           </div>
-          <pagination></pagination>
+          <pagination :listBlog="listBlog"></pagination>
         </div>
       </div>
     </div>
