@@ -10,11 +10,12 @@
   "dependencies": {
     "chart.js": "^2.9.1",
     "core-js": "^3.3.2",
+    "countup.js": "^2.0.4",
     "firebase": "^7.2.2",
-    "jquery": "^3.4.1",
     "lodash": "^4.17.15",
     "marked": "^0.7.0",
     "vue": "^2.6.10",
+    "vue-countup-v2": "^4.0.0",
     "vue-resource": "^1.5.1",
     "vue-router": "^3.1.3"
   },

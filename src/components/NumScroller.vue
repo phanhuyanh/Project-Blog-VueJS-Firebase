@@ -4,11 +4,19 @@
           <div class="-flex -center-y analytics">
             <div class="analytic-users -flex -center-x -flex-direction-col">
               <div class="analytic-title -text-center">User</div>
-              <span class="analytic-num -flex -center-x -center-y numscroller" data-min="1" data-max="1000" data-delay="5" data-increment="10">1000</span>
+              <span class="analytic-num -flex -center-x -center-y">
+                <div class="iCountUp">
+                  <i-count-up :delay="delay" :endVal="numUsers" @ready="onReadyUser"></i-count-up>
+                </div>
+              </span>
             </div>
             <div class="analytic-blogs -flex -center-x -flex-direction-col">
               <div class="analytic-title -text-center">Blogs</div>
-              <span class="analytic-num -flex -center-x -center-y numscroller" data-min="1" data-max="1000" data-delay="5" data-increment="10">6000</span>
+              <span class="analytic-num -flex -center-x -center-y">
+                <div class="iCountUp">
+                  <i-count-up :delay="delay" :endVal="numBlogs" @ready="onReadyBlog"></i-count-up>
+                </div>
+              </span>
             </div>
           </div>
       </div>
