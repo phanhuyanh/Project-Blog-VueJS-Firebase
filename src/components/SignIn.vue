@@ -94,10 +94,12 @@ export default {
           console.log("loi", error)
         });
     },
-    setUser() {
-      var user = store.getMyUser();
+    async setUser() {
+      var user = await store.getMyUser();
 
-      //console.log("user provider: ", user.providerData[0])
+      var isUser = await firebase.firestore().collection("users").doc(user.uid).get();
+
+      if(isUser.data().id) return;
 
       var profile = {...user.providerData[0], ...{
         linkGithub: '',

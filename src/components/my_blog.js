@@ -3,13 +3,15 @@ import Pagination from "./Pagination.vue";
 import BlogItem from './BlogItem.vue';
 import Loader from './Loader.vue';
 import store from '../api/store.js';
+import ModalEditBlog from './ModalEditBlog.vue';
 
 export default {
   components: {
     Search,
     Pagination,
     BlogItem,
-    Loader
+    Loader,
+    ModalEditBlog
   },
   data: () => ({
       listBlog: [],
@@ -17,8 +19,9 @@ export default {
       limit: 5,
       page: 1,
       listNav: [],
-      max_page: 1,
-      pageCur: 0
+      tempListBlog: [],
+      pageCur: 0,
+      max_page: 1
   }),
   async created() {
       this.isLoading = true;
@@ -35,13 +38,22 @@ export default {
 
       this.listBlog.sort((a,b) => b.timestamp - a.timestamp);
 
-      this.max_page = Math.ceil(this.listBlog / this.limit);
+      this.tempListBlog = this.listBlog;
+      this.max_page = Math.ceil(this.listBlog.length / this.limit);
       this.isLoading = false;
   },
   methods: {
+    searchBlog(data) {
+      if(!data || !data.trim()) this.tempListBlog = this.listBlog;
+
+      this.tempListBlog = this.listBlog.filter(e => e.title.includes(data) || e.description.includes(data))
+    },
     nextPage(idx) {
       this.pageCur = idx;
       this.page = idx + 1;
+    },
+    delBlogItem(id) {
+      this.listBlog = this.listBlog.filter(e => e.id != id);
     }
   },
   computed: {
@@ -49,11 +61,11 @@ export default {
       var start = this.limit * (this.page - 1);
       var end = start + this.limit;
 
-      return this.listBlog.slice(start, end);
+      return this.tempListBlog.slice(start, end);
     },
     createPag() {
       this.listNav = [];
-      var len = this.listBlog.length;
+      var len = this.tempListBlog.length;
       var num_page = Math.ceil(len / this.limit);
 
       if(num_page < 2) return [];
@@ -72,7 +84,7 @@ export default {
         else {
           if(this.page == 2) this.listNav.push(this.page);
 
-          else this.listBlogLimit.push(this.page - 1, this.page);
+          else this.listNav.push(this.page - 1, this.page);
         }
       }
       else {

@@ -2,7 +2,7 @@
   <div class="avatar" 
     :style="{width: width + 'px', height: height + 'px'}">
       <div class="avatar-border -full-width -full-height" :style="{width: width + 'px', height: height + 'px'}">
-          <img :src="img_src" 
+          <img :src="img_prop || img_src" 
           alt="" class="-full-width -full-height"
           :style="{width: width + 'px', height: height + 'px'}">
       </div>

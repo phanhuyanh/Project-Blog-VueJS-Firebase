@@ -1,14 +1,19 @@
 <template>
   <div id="my-profile" class="-grid">
-      <div class="my-profile-info">
-          <div class="-invidual -flex -center-x -center-y -flex-direction-col">
-            <avatar p_width="100" p_height="100"></avatar>
-            <h3>Display Name</h3>
+      <div class="my-profile-info relative">
+          <div class="edit-profile absolute" title="edit profile">
+              <router-link to="/account/basic">
+              <span><i class="fas fa-edit"></i></span>
+              </router-link>
           </div>
-          <p class="text-overflow mar-b-15"><span class="-inl-block mar-r-5"><i class="fas fa-envelope"></i></span> phanhuyanh251@gmail.com</p>
-          <p class="text-overflow mar-b-15"><span class="-inl-block mar-r-5"><i class="fas fa-phone-alt"></i></span> 0776424268</p>
-          <div class="text-overflow mar-b-15"><span class="-inl-block mar-r-5"><i class="fab fa-github-square"></i></span><a href="https://github.com/phanhuyanh">https://github.com/phanhuyanh</a></div>
-          <div class="text-overflow mar-b-15"><span class="-inl-block mar-r-5"><i class="fab fa-linkedin"></i></span><a href="https://www.linkedin.com/in/profile">https://www.linkedin.com/in/profile</a></div>
+          <div class="-invidual -flex -center-x -center-y -flex-direction-col">
+            <avatar p_width="100" p_height="100" :img_prop="me.photoURL"></avatar>
+            <h3>{{ me.displayName }}</h3>
+          </div>
+          <p class="text-overflow mar-b-15"><span class="-inl-block mar-r-5"><i class="fas fa-envelope"></i></span>{{ me.email }}</p>
+          <p class="text-overflow mar-b-15"><span class="-inl-block mar-r-5"><i class="fas fa-phone-alt"></i></span>{{ me.phoneNumber }}</p>
+          <div class="text-overflow mar-b-15"><span class="-inl-block mar-r-5"><i class="fab fa-github-square"></i></span><a href="https://github.com/phanhuyanh">{{ me.linkGithub }}</a></div>
+          <div class="text-overflow mar-b-15"><span class="-inl-block mar-r-5"><i class="fab fa-linkedin"></i></span><a href="https://www.linkedin.com/in/profile">{{ me.linkLinked }}</a></div>
       </div>
       <div class="exp -grid">
           <div class="languages">
@@ -97,5 +102,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.edit-profile{
+    top: 0;
+    right: 0;
+}
+
+.edit-profile a {
+    color: #181818;
 }
 </style>

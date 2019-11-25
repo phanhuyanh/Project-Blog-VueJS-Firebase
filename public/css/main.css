@@ -211,3 +211,28 @@ p {
 .pointer-event {
     pointer-events: none;
 }
+
+ul {
+    list-style-type: none;
+}
+
+.modal {
+    position: fixed;
+}
+
+.relative {
+    position: relative;
+}
+
+.absolute {
+    position: absolute;
+}
+
+.btn-outline-primary {
+    background: none;
+    color: #007bff;
+}
+
+.btn-outline-primary:hover {
+    color: #fff;
+}

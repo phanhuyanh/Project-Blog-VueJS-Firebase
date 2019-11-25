@@ -39,7 +39,8 @@ export default {
             id: key,
             description: this.input,
             timestamp: Date.now(),
-            title: this.title
+            title: this.title,
+            author_id: user.uid
         }).then(() => {
           this.isLoading = false;
           alert('thanh cong');

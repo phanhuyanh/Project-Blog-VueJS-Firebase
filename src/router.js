@@ -12,6 +12,8 @@ import MyBlog from './components/MyBlog.vue';
 import MyProfile from './components/MyProfile.vue';
 import AddBlog from './components/AddBlog.vue';
 import Topic from './components/Topic.vue';
+import Account from './components/Account.vue';
+import AccBasic from './components/AccBasic.vue';
 
 Vue.use(VueRouter);
 
@@ -90,6 +92,20 @@ export default new VueRouter({
             name: 'topic',
             component: Topic
 
+        },
+        {
+            path: '/account',
+            component: Account,
+            meta: {
+                requireAuth: true
+            },
+            children: [
+                {
+                    path: 'basic',
+                    name: 'basic',
+                    component: AccBasic
+                }
+            ]
         }
     ],
     mode: 'history'

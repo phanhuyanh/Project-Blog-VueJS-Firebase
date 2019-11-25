@@ -22,7 +22,7 @@
           </div>
           <div class="-flex list-blog-info">
               <p>{{ listBlog.length }} blogs</p>
-              <search></search>
+              <search @searchBlog="searchBlog($event)"></search>
           </div>
           <div class="-grid main-blog">
             <blog 
@@ -32,7 +32,7 @@
                 :creator="creator"
             ></blog>
           </div>
-          <pagination :listBlog="listBlog"></pagination>
+          <pagination :listBlog="listTempBlog.length"></pagination>
         </div>
       </div>
     </div>

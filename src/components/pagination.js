@@ -1,6 +1,6 @@
 export default {
     props: {
-        listBlog: Array
+      listBlog: Number
     },
   data: () => ({
       limit: 5,
@@ -9,7 +9,7 @@ export default {
   computed: {
     createPag() {
       this.listNav = [];
-      var len = this.listBlog.length;
+      var len = this.listBlog;
       var page = this.$route.params.id;
       var num_page = Math.ceil(len / this.limit);
 
@@ -27,7 +27,7 @@ export default {
         if (page > 3) this.listNav.push("...", page - 1, page);
         else {
           if (page == 2) this.listNav.push(page);
-          else this.listBlogLimit.push(page - 1, page);
+          else this.listNav.push(page - 1, page);
         }
       } else {
         if (page > 3) this.listNav.push("...");

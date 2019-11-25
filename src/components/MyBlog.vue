@@ -1,20 +1,22 @@
 <template>
   <div class="my-blog">
+    <modal-edit-blog ref="show_modal"></modal-edit-blog>
     <div class="my-blog-head -flex">
-      <search></search>
+      <search @searchBlog="searchBlog($event)"></search>
     </div>
     <template>
       <loader v-if="isLoading"></loader>
       <div class="my-blog-main -grid" v-else>
         <template v-if="listBlogLimit.length">
-        <blog-item
-          v-for="item in listBlogLimit"
-          :key="item.id"
-          :title="item.title"
-          :description="item.description"
-          :timestamp="item.timestamp"
-          :id="item.id"
-        ></blog-item>
+          <blog-item
+            v-for="item in listBlogLimit"
+            :key="item.id"
+            :title="item.title"
+            :description="item.description"
+            :timestamp="item.timestamp"
+            :id="item.id"
+            :author_id="item.author_id"
+          ></blog-item>
         </template>
         <div v-else>
           <p>Không có blog nào hãy tạo nhiều blog hơn.</p>
@@ -22,10 +24,10 @@
         </div>
       </div>
     </template>
-    <div class="pag" v-if="max_page != 1">
+    <div class="pag" v-if="createPag.length">
       <div class="navigation">
         <nav class="-flex -full-width -full-height -center-x -center-y">
-          <div class="chevron-left cursor-pointer" @click="--page" :style="{'disable': page == 1}">
+          <div class="chevron-left cursor-pointer" @click="--page;--pageCur" :class="{'pointer-event': page == 1}">
             <div class="-full-width -full-height -flex">
               <span>
                 <i class="fas fa-chevron-left"></i>
@@ -33,11 +35,21 @@
             </div>
           </div>
           <div class="nav-page -flex">
-            <div class="page" v-for="(numPage, index) in createPag" :key="index" :class="{'active': index  == pageCur}" @click="nextPage(index)">
-              <div class="-block -text-center -full-width -full-height cursor-pointer">{{ numPage }} </div>
+            <div
+              class="page"
+              v-for="(numPage, index) in createPag"
+              :key="index"
+              :class="{'active': index  == pageCur}"
+              @click="nextPage(index)"
+            >
+              <div class="-block -text-center -full-width -full-height cursor-pointer">{{ numPage }}</div>
             </div>
           </div>
-          <div class="chevron-right cursor-pointer" @click="++page" :style="{'disable': page == max_page}">
+          <div
+            class="chevron-right cursor-pointer"
+            @click="++page;++pageCur"
+            :class="{'pointer-event': page == max_page}"
+          >
             <div class="-full-width -full-height -flex">
               <span>
                 <i class="fas fa-chevron-right"></i>
@@ -92,4 +104,5 @@ nav .chevron-right {
 .page.active {
   color: #fff;
 }
+
 </style>

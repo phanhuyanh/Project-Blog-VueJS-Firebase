@@ -1,15 +1,13 @@
 <template>
   <div class="search">
-    <input type="text" placeholder="Search title, author, description" />
-    <span>
+    <input type="text" placeholder="Search title, author, description" @keyup.enter="searchBlog()" v-model="textSearch"/>
+    <span @click="searchBlog()">
       <i class="fas fa-search"></i>
     </span>
   </div>
 </template>
 
-<script>
-export default {};
-</script>
+<script src="./search.js"></script>
 
 <style scoped>
 .search {

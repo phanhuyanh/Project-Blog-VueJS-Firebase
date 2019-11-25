@@ -1,14 +1,25 @@
 import Avatar from "./Avatar.vue";
 import Chart from "chart.js";
+import store from '@/api/store';
 
 export default {
   components: {
     Avatar
   },
+  data: () => ({
+    me: {}
+  }),
+  async created(){
+    var user = await store.getMyUser();
+
+    this.me = await store.getUser(user.uid);
+
+    this.me = this.me.data()
+  },
   mounted() {
     var ctx = document.getElementById("myChart");
 
-    new Chart(ctx, {
+    new Chart(ctx || [], {
       type: "bar",
       data: {
         labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],

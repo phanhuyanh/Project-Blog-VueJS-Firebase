@@ -1,5 +1,5 @@
 <template>
-  <div class="navigation">
+  <div class="navigation" v-if="Math.ceil(listBlog / limit) > 1">
     <nav class="-flex -full-width -full-height -center-x -center-y">
       <div class="chevron-left" :class="{'pointer-event' : $route.params.id < 2}">
         <router-link :to="'/blog/page/' + (+$route.params.id - 1)" class="-full-width -full-height -flex">
@@ -13,9 +13,9 @@
           <router-link :to="'/blog/page/' + (index + 1)" class="-block -text-center -full-width -full-height">{{ item }}</router-link>
         </div>
       </div>
-      <div class="chevron-right" :class="{'pointer-event' : Math.ceil(listBlog.length / limit) == $route.params.id}">
+      <div class="chevron-right" :class="{'pointer-event' : Math.ceil(listBlog / limit) == $route.params.id}">
         <router-link :to="'/blog/page/' + (+$route.params.id + 1)" class="-full-width -full-height -flex">
-          <span>
+          <span> 
             <i class="fas fa-chevron-right"></i>
           </span>
         </router-link>
