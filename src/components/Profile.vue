@@ -7,7 +7,7 @@
       <div class="notice-info" v-if="showNotice">
           <div class="list-items">
               <div class="item">
-                  <avatar></avatar>
+                  <avatar :img_prop="me.photoURL"></avatar>
                   <div class="item-content">
                       <p>Đã bình luận về bài viết LifeCycle Hook VueJS</p>
                       <p class="time"><span></span> 2 days ago</p>

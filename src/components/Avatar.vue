@@ -2,7 +2,7 @@
   <div class="avatar" 
     :style="{width: width + 'px', height: height + 'px'}">
       <div class="avatar-border -full-width -full-height" :style="{width: width + 'px', height: height + 'px'}">
-          <img :src="img_prop || img_src" 
+          <img :src="img_src" 
           alt="" class="-full-width -full-height"
           :style="{width: width + 'px', height: height + 'px'}">
       </div>
@@ -10,8 +10,6 @@
 </template>
 
 <script>
-import firebase from 'firebase';
-
 export default {
     props: {
         p_width: String,
@@ -21,18 +19,22 @@ export default {
     data: () => ({
         img_src: "https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?f=y",
         width: 30,
-        height: 30 
+        height: 30,
+        me: {}
     }),
     created() {
-        var user = firebase.auth().currentUser;
+        console.log("img_prop", this.img_prop)
         if(this.img_prop) {
             this.img_src = this.img_prop;
         }
-        else if(user) {
-            this.img_src = user.photoURL;
-        }
+       
         this.width = this.p_width || 30;
         this.height = this.p_height || 30;
+    },
+    watch: {
+        img_prop(newValue) {
+            this.img_src = newValue;
+        } 
     }
 }
 </script>

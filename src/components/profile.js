@@ -10,7 +10,10 @@ export default {
       showNotice : false,
       me: {}
   }),
-  created() {
-      this.me = store.getMyUser(); 
+  async created() {
+      var user = await store.getMyUser();
+
+      this.me = await store.getUser(user.uid);
+      this.me = this.me.data();
   }
 };

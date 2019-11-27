@@ -1,13 +1,38 @@
 <template>
   <div id="my-profile" class="-grid">
+      <div class="fixed bg-black -full-width -full-height" v-if="showModal"></div>
+      <div class="modal modal-update-avatar" v-if="showModal">
+          <template v-if="isLoadUpload">
+              <loader/>
+          </template>
+          <template v-else>
+            <div class="close" @click="showModal = false">
+                <span><i class="fas fa-times"></i></span>
+            </div>
+            <h3 class="-text-align">Upload Profile Picture</h3>
+            <div class="form-group">
+                <label for="file" class="btn btn-primary -full-width">choose file</label>
+                <input type="file" class="form-control" id="file" @change="e => showPreview(e)">
+            </div>
+            <div class="div-priview-img" v-if="isShowPreview">
+                <img id="img-preview" class="-full-width -full-height">
+            </div>
+            <div class="upload-profile" :class="{'pointer-event': !isChooseImg}">
+                <div @click="uploadAvatar()">upload</div>
+            </div>
+          </template>
+      </div>
       <div class="my-profile-info relative">
           <div class="edit-profile absolute" title="edit profile">
               <router-link to="/account/basic">
               <span><i class="fas fa-edit"></i></span>
               </router-link>
           </div>
-          <div class="-invidual -flex -center-x -center-y -flex-direction-col">
+          <div class="-invidual -flex -center-x -center-y -flex-direction-col relative">
             <avatar p_width="100" p_height="100" :img_prop="me.photoURL"></avatar>
+            <div class="wrap-avatar absolute -none cursor-pointer" @click="showModal = true">
+                <span class="-full-width -full-height -flex -center-x -center-y"><i class="fas fa-camera"></i></span>
+            </div>
             <h3>{{ me.displayName }}</h3>
           </div>
           <p class="text-overflow mar-b-15"><span class="-inl-block mar-r-5"><i class="fas fa-envelope"></i></span>{{ me.email }}</p>
@@ -111,5 +136,103 @@
 
 .edit-profile a {
     color: #181818;
+}
+
+.wrap-avatar {
+    width: 100px;
+    height: 100px;
+    background: #18181836;
+    top: 0;
+    z-index: 1;
+}
+
+.wrap-avatar span i {
+    font-size: 20px;
+}
+
+.-invidual:hover .wrap-avatar {
+    display: block;
+}
+
+.modal-update-avatar {
+    width: 400px;
+    margin: auto;
+    z-index: 3;
+    left: calc((100% - 300px) / 2);
+    right: calc((100% - 300px) / 2);
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.modal-update-avatar h3 {
+    color: #333;
+    font-weight: 100;
+    margin-bottom: 10px;
+    padding: 15px;
+    text-align: center;
+}
+
+.upload-profile {
+    margin-top: auto;
+    padding: 15px;
+    border-top: 1px solid #ccc;
+    text-align: center;
+    text-transform: uppercase;
+    color: #548eff;
+    font-weight: bold;
+    cursor: pointer;
+}
+.upload-profile:hover {
+    color: #548effc9;
+}
+
+.bg-black {
+    background: #00000085;
+    left: 0;
+    top: 0;
+    z-index: 2;
+}
+
+[type="file"] {
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute !important;
+  white-space: nowrap;
+  width: 1px;
+}
+ 
+[type="file"] + label {
+  background-color: #000;
+  border-radius: 4rem;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  padding-left: 2rem 4rem;
+}
+  
+[type="file"]:focus + label,
+[type="file"] + label:hover {
+    background-color: #f15d22;
+}
+  
+[type="file"]:focus + label {
+  outline: 1px dotted #000;
+}
+
+.div-priview-img {
+    padding: 15px;
+    height: 300px;
+}
+
+.div-priview-img img {
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border: 1px dashed #000;
 }
 </style>

@@ -1,22 +1,35 @@
 import Avatar from "./Avatar.vue";
 import Chart from "chart.js";
 import store from '@/api/store';
+import firebase from 'firebase';
+import Loader from './Loader.vue';
 
 export default {
   components: {
-    Avatar
+    Avatar,
+    Loader
   },
   data: () => ({
-    me: {}
+    me: {},
+    isShowPreview: false,
+    showModal: false,
+    isLoadUpload: false,
+    isChooseImg: false
   }),
   async created(){
-    var user = await store.getMyUser();
+    var user = store.getMyUser();
 
     this.me = await store.getUser(user.uid);
 
     this.me = this.me.data()
   },
   mounted() {
+    document.onkeydown = function(e) {
+      if(e.keyCode != 27) return
+
+      this.showModal = false;
+    }
+
     var ctx = document.getElementById("myChart");
 
     new Chart(ctx || [], {
@@ -59,5 +72,46 @@ export default {
         }
       }
     });
+  },
+  methods: {
+    showPreview(event) {
+      this.isChooseImg = true;
+     
+      var reader = new FileReader();
+      reader.onload = function() {
+        var dataURL = reader.result;
+        var output = document.getElementById('img-preview');
+        output.src = dataURL;
+      }
+      reader.readAsDataURL(event.target.files[0]);
+      this.isShowPreview = true;
+    },
+    async uploadAvatar() {
+      this.isLoadUpload = true;
+
+      var file = document.getElementById("file");
+
+      var storageRef = firebase.storage().ref('Avatar-Profile/' + this.me.id + '/' + file.files[0].name);
+
+      await storageRef.put(file.files[0]).then(async () => {
+        var url = await firebase.storage().ref('Avatar-Profile/' + this.me.id + '/' + file.files[0].name).getDownloadURL().then(url => url);
+
+        store.updateUser(this.me.id, {'photoURL': url})
+
+        this.me.photoURL = url;
+        alert('upload success');
+        this.reset()
+        
+      }).catch(err => {
+        console.log("err", err)
+        alert('upload fail');
+      })
+      this.isLoadUpload = false;
+    },
+    reset() {
+      this.isChooseImg = false;
+      this.isShowPreview = false;
+      this.showModal = false;
+    }
   }
 };
