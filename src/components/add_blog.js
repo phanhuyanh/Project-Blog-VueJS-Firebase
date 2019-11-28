@@ -1,7 +1,7 @@
-import marked from "marked";
-import generateKey from "../common/generate_key.js";
-import firebase from "firebase";
-import Loader from "./Loader.vue";
+import marked from 'marked';
+import generateKey from '../common/generate_key.js';
+import Loader from './Loader.vue';
+import store from '@/api/store.js';
 
 export default {
   components: {
@@ -20,9 +20,7 @@ export default {
   },
   beforeRouteLeave(to, from, next) {
     if (this.input || this.title) {
-      var r = confirm(
-        "Bạn vẫn chưa lưu thay đổi, rời đi sẽ xóa hết sự thay đổi."
-      );
+      var r = confirm('Bạn vẫn chưa lưu thay đổi, rời đi sẽ xóa hết sự thay đổi.')
 
       if (r) next();
     }
@@ -31,29 +29,28 @@ export default {
   methods: {
     async postBlog() {
       this.isLoading = true;
-      var user = firebase.auth().currentUser;
+      var user = await store.getMyUser()
       var key = await generateKey();
 
-      var db = firebase.firestore();
+      //var db = firebase.firestore();
 
-      db.collection("blogs")
-        .doc(user.uid)
-        .collection("blog")
-        .doc(key)
-        .set({
-          id: key,
-          description: this.input,
-          timestamp: Date.now(),
-          title: this.title,
-          author_id: user.uid
-        })
-        .then(() => {
-          this.isLoading = false;
-          alert("thanh cong");
-          this.input = "";
-          this.title = "";
-        })
-        .catch(() => alert("that bai"));
+      var blog = {
+        id: key,
+        description: this.input,
+        timestamp: Date.now(),
+        title: this.title,
+        author_id: user.uid
+      }
+
+      Promise.all([
+        store.addBlog(user.uid, blog),
+        store.addNewBlog(key, blog)
+      ]).then(() => {
+        this.isLoading = false;
+        this.input = '';
+        this.title = '';
+        alert('thanh cong');
+      }).catch(() => alert('that bai'))
     }
   }
 };

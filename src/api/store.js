@@ -63,4 +63,8 @@ store.updateUser = (uid, dataProfile) =>
     .then(() => "success")
     .catch(() => "err");
 
+store.addBlog = (uid, blog) => firebase.firestore().collection("blogs").doc(uid).collection("blog").doc(blog.id).set(blog)
+
+store.addNewBlog = (bid, blog) => firebase.firestore().collection("newBlogs").doc(bid).set(blog)
+
 export default store;
