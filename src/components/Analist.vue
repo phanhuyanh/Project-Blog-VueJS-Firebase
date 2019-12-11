@@ -1,15 +1,11 @@
 <template>
   <div class="analist -full-width -full-height">
-      a
+    a
   </div>
 </template>
 
 <script>
-export default {
-
-}
+export default {};
 </script>
 
-<style>
-
-</style>
+<style></style>

@@ -1,18 +1,16 @@
 <template>
   <div id="menu">
-     <nav>
-       <ul>
-         <li><router-link to="/">Home</router-link></li>
-         <li><a href="#">Video</a></li>
-       </ul>
-     </nav>
+    <nav>
+      <ul>
+        <li><router-link to="/">Home</router-link></li>
+        <li><a href="#">Video</a></li>
+      </ul>
+    </nav>
   </div>
 </template>
 
 <script>
-export default {
-
-}
+export default {};
 </script>
 
 <style scoped>

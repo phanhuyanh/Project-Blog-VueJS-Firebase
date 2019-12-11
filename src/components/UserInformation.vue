@@ -10,7 +10,8 @@
               :to="item.link"
               :key="item.key"
               exact
-            >{{ item.title }}</router-link>
+              >{{ item.title }}</router-link
+            >
           </ul>
         </div>
         <div class="main-content">
@@ -35,19 +36,16 @@ export default {
     list_info: [
       { title: "Profile", key: 0, link: "/user-information" },
       { title: "My Blog", key: 1, link: "/user-information/my-blog" },
-      {title: "Add Blog", key: 2, link: "/user-information/add-blog"}
+      { title: "Add Blog", key: 2, link: "/user-information/add-blog" }
     ]
   }),
   created() {
     //firebase.database().ref("storeKey").set({key: "[]"})
     //await ge()
     //var db = firebase.database();
-
     //db.ref('storeKey').set({key: '1'})
-
     // this.$http.get('https://project-blog-83893.firebaseio.com/').then(data => console.log(data))
     //     .catch(err => console.log(err))
-
     // db.ref("storeKey").once('value').then(function(snapshot) {
     //   console.log(snapshot.val())
     // })
@@ -91,7 +89,6 @@ export default {
   height: 2px;
   background: #548eff;
 }
-
 
 .main-content {
   padding: 15px 0 30px 0;

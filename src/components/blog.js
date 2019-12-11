@@ -1,5 +1,5 @@
 import Avatar from "./Avatar.vue";
-import marked from 'marked';
+import marked from "marked";
 
 export default {
   props: {
@@ -13,17 +13,16 @@ export default {
     timeDisplay: function(timestamp) {
       var date = new Date(timestamp);
 
-      return `${date.getDate()}/${date.getMonth()  + 1}/${date.getFullYear()}`
+      return `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
     }
   },
   data: () => ({
-      showOption: false
+    showOption: false
   }),
-  created() {
-  },
+  created() {},
   methods: {
     compiledMarkdown(text) {
-      return marked(text || '', { sanitize: true });
+      return marked(text || "", { sanitize: true });
     }
   }
 };

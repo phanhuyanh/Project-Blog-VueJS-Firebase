@@ -1,8 +1,9 @@
 import Avatar from "./Avatar.vue";
 import Chart from "chart.js";
-import store from '@/api/store';
-import firebase from 'firebase';
-import Loader from './Loader.vue';
+import store from "@/api/store";
+import firebase from "firebase";
+import Loader from "./Loader.vue";
+import { mapGetters } from "vuex";
 
 export default {
   components: {
@@ -10,25 +11,20 @@ export default {
     Loader
   },
   data: () => ({
-    me: {},
     isShowPreview: false,
     showModal: false,
     isLoadUpload: false,
     isChooseImg: false
   }),
-  async created(){
-    var user = store.getMyUser();
-
-    this.me = await store.getUser(user.uid);
-
-    this.me = this.me.data()
+  computed: {
+    ...mapGetters({me: "getMe"})
   },
   mounted() {
     document.onkeydown = function(e) {
-      if(e.keyCode != 27) return
+      if (e.keyCode != 27) return;
 
       this.showModal = false;
-    }
+    };
 
     var ctx = document.getElementById("myChart");
 
@@ -76,13 +72,13 @@ export default {
   methods: {
     showPreview(event) {
       this.isChooseImg = true;
-     
+
       var reader = new FileReader();
       reader.onload = function() {
         var dataURL = reader.result;
-        var output = document.getElementById('img-preview');
+        var output = document.getElementById("img-preview");
         output.src = dataURL;
-      }
+      };
       reader.readAsDataURL(event.target.files[0]);
       this.isShowPreview = true;
     },
@@ -91,21 +87,29 @@ export default {
 
       var file = document.getElementById("file");
 
-      var storageRef = firebase.storage().ref('Avatar-Profile/' + this.me.id + '/' + file.files[0].name);
+      var storageRef = firebase
+        .storage()
+        .ref("Avatar-Profile/" + this.$store.state.me.id + "/" + file.files[0].name);
 
-      await storageRef.put(file.files[0]).then(async () => {
-        var url = await firebase.storage().ref('Avatar-Profile/' + this.me.id + '/' + file.files[0].name).getDownloadURL().then(url => url);
+      await storageRef
+        .put(file.files[0])
+        .then(async () => {
+          var url = await firebase
+            .storage()
+            .ref("Avatar-Profile/" + this.$store.state.me.id + "/" + file.files[0].name)
+            .getDownloadURL()
+            .then(url => url);
 
-        store.updateUser(this.me.id, {'photoURL': url})
+          store.updateUser(this.$store.state.me.id, { photoURL: url });
 
-        this.me.photoURL = url;
-        alert('upload success');
-        this.reset()
-        
-      }).catch(err => {
-        console.log("err", err)
-        alert('upload fail');
-      })
+          this.$store.commit('updateMeAttr', {photoURL: url})
+          alert("upload success");
+          this.reset();
+        })
+        .catch(err => {
+          console.log("err", err);
+          alert("upload fail");
+        });
       this.isLoadUpload = false;
     },
     reset() {

@@ -29,8 +29,7 @@ export default {
 };
 </script>
 
-<style >
-
+<style>
 div#home {
   background: #181818;
 }
@@ -41,8 +40,6 @@ div#home {
   grid-column-gap: 15px;
   align-items: center;
 }
-
-
 
 div#header {
   color: #fff;
@@ -55,7 +52,6 @@ div#header {
   z-index: 1;
 }
 .main-header {
-    justify-content: space-between;
+  justify-content: space-between;
 }
-
 </style>

@@ -1,25 +1,33 @@
 <template>
   <div class="num-scroll">
-      <div class="container">
-          <div class="-flex -center-y analytics">
-            <div class="analytic-users -flex -center-x -flex-direction-col">
-              <div class="analytic-title -text-center">User</div>
-              <span class="analytic-num -flex -center-x -center-y">
-                <div class="iCountUp">
-                  <i-count-up :delay="delay" :endVal="numUsers" @ready="onReadyUser"></i-count-up>
-                </div>
-              </span>
+    <div class="container">
+      <div class="-flex -center-y analytics">
+        <div class="analytic-users -flex -center-x -flex-direction-col">
+          <div class="analytic-title -text-center">User</div>
+          <span class="analytic-num -flex -center-x -center-y">
+            <div class="iCountUp">
+              <i-count-up
+                :delay="delay"
+                :endVal="numUsers"
+                @ready="onReadyUser"
+              ></i-count-up>
             </div>
-            <div class="analytic-blogs -flex -center-x -flex-direction-col">
-              <div class="analytic-title -text-center">Blogs</div>
-              <span class="analytic-num -flex -center-x -center-y">
-                <div class="iCountUp">
-                  <i-count-up :delay="delay" :endVal="numBlogs" @ready="onReadyBlog"></i-count-up>
-                </div>
-              </span>
+          </span>
+        </div>
+        <div class="analytic-blogs -flex -center-x -flex-direction-col">
+          <div class="analytic-title -text-center">Blogs</div>
+          <span class="analytic-num -flex -center-x -center-y">
+            <div class="iCountUp">
+              <i-count-up
+                :delay="delay"
+                :endVal="numBlogs"
+                @ready="onReadyBlog"
+              ></i-count-up>
             </div>
-          </div>
+          </span>
+        </div>
       </div>
+    </div>
   </div>
 </template>
 
@@ -43,7 +51,8 @@ span.analytic-num {
   font-size: 2rem;
 }
 
-.analytic-users, .analytic-blogs {
+.analytic-users,
+.analytic-blogs {
   margin-bottom: 15px;
   font-size: 2rem;
 }

@@ -1,18 +1,18 @@
 <template>
   <div class="add-blog">
     <div id="await-post" v-if="isLoading">
-      <loader/>
+      <loader />
     </div>
     <div class="title form-group">
       <label for="">Title:</label>
-      <input type="text" class="form-control" v-model="title">
+      <input type="text" class="form-control" v-model="title" />
     </div>
     <div id="editor">
-      <textarea  v-model="input" placeholder="you can write markdown"></textarea>
+      <textarea v-model="input" placeholder="you can write markdown"></textarea>
       <div v-html="compiledMarkdown" class="preview overflow-x-auto"></div>
     </div>
     <div class="post-blog -flex -center-x">
-        <button class="btn btn-primary" @click="postBlog()">Post Blog</button>
+      <button class="btn btn-primary" @click="postBlog()">Post Blog</button>
     </div>
   </div>
 </template>
@@ -21,7 +21,7 @@
 
 <style scoped>
 .add-blog {
-    height: 100%;
+  height: 100%;
 }
 
 .add-blog .title {
@@ -29,10 +29,11 @@
 }
 
 #editor {
-    height: 450px;
+  height: 450px;
 }
 
-textarea, #editor div {
+textarea,
+#editor div {
   display: inline-block;
   width: 50%;
   height: 100%;
@@ -47,7 +48,7 @@ textarea {
   resize: none;
   outline: none;
   font-size: 14px;
-  font-family: 'Monaco', courier, monospace;
+  font-family: "Monaco", courier, monospace;
   padding: 20px;
   line-height: 28px;
 }
@@ -57,8 +58,8 @@ textarea {
 }
 
 .post-blog {
-    margin-top: 15px;
-    justify-content: flex-end;
+  margin-top: 15px;
+  justify-content: flex-end;
 }
 
 .preview {

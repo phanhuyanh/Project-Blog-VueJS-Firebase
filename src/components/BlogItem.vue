@@ -1,10 +1,13 @@
 <template>
   <!-- Blog -->
   <div class="blog-item">
-    <router-link :to="{ name: 'topic', params: { id: id }}" class="-block -full-width -full-height">
+    <router-link
+      :to="{ name: 'topic', params: { id: id } }"
+      class="-block -full-width -full-height"
+    >
       <div class="title">{{ title }}</div>
       <div class="description">{{ description }}</div>
-      <div class="creat-at">{{dateFormat(timestamp) }}</div>
+      <div class="creat-at">{{ dateFormat(timestamp) }}</div>
     </router-link>
     <div class="blog-option">
       <ul>

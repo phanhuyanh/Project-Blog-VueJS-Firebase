@@ -1,6 +1,6 @@
 <template>
   <div id="list-blog">
-    <loader v-if="isLoading"/>
+    <loader v-if="isLoading" />
     <div class="container" v-else>
       <div class="-layout -flex">
         <div class="menu-bar">
@@ -18,18 +18,20 @@
             <div class="all-blog">
               All Blog
             </div>
-            <router-link class="btn btn-primary" to="/user-information/add-blog">Post Blog</router-link>
+            <router-link class="btn btn-primary" to="/user-information/add-blog"
+              >Post Blog</router-link
+            >
           </div>
           <div class="-flex list-blog-info">
-              <p>{{ listBlog.length }} blogs</p>
-              <search @searchBlog="searchBlog($event)"></search>
+            <p>{{ listBlog.length }} blogs</p>
+            <search @searchBlog="searchBlog($event)"></search>
           </div>
           <div class="-grid main-blog">
-            <blog 
-                v-for="([itemBlog, creator]) in listBlogMaxPage" 
-                :key="itemBlog.id"
-                :blog="itemBlog"
-                :creator="creator"
+            <blog
+              v-for="[itemBlog, creator] in listBlogMaxPage"
+              :key="itemBlog.id"
+              :blog="itemBlog"
+              :creator="creator"
             ></blog>
           </div>
           <pagination :listBlog="listTempBlog.length"></pagination>
@@ -48,7 +50,6 @@
 }
 
 .main-blog {
-
 }
 
 .list-blog-title {
@@ -65,32 +66,32 @@
 }
 
 .list-blog-main {
-    flex-basis: 80%;
+  flex-basis: 80%;
 }
 
 .menu-bar {
-    border-right: 1px solid #ccc;
+  border-right: 1px solid #ccc;
 }
 
 .menu-bar nav ul {
-    list-style-type: none;
+  list-style-type: none;
 }
 
 .menu-bar nav ul li {
-    padding: 0 15px;
+  padding: 0 15px;
 }
 
 .menu-bar nav ul li a {
-    color: #535a60;
+  color: #535a60;
 }
 
 .menu-bar nav ul li a:hover {
-    color: #000000;
+  color: #000000;
 }
 
 .list-blog-info {
-    justify-content: space-between;
-    padding: 15px 30px;
-    border-bottom: 1px solid #ccc;
+  justify-content: space-between;
+  padding: 15px 30px;
+  border-bottom: 1px solid #ccc;
 }
 </style>

@@ -42,6 +42,5 @@
 
 .preview a {
   color: #2b2bff;
-;
 }
 </style>

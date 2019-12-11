@@ -1,7 +1,7 @@
-import HeaderLayout from './HeaderLayout.vue';
+import HeaderLayout from "./HeaderLayout.vue";
 
 export default {
-    components: {
-        HeaderLayout
-    }
-}
+  components: {
+    HeaderLayout
+  }
+};

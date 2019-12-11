@@ -1,19 +1,17 @@
 import Avatar from "./Avatar.vue";
-import store from '../api/store.js';
+import { mapState } from "vuex";
 
 export default {
   components: {
     Avatar
   },
   data: () => ({
-      showInfo: false,
-      showNotice : false,
-      me: {}
+    showInfo: false,
+    showNotice: false
   }),
-  async created() {
-      var user = await store.getMyUser();
-
-      this.me = await store.getUser(user.uid);
-      this.me = this.me.data();
+  computed: {
+    ...mapState({
+      me: state => state.me
+    })
   }
 };

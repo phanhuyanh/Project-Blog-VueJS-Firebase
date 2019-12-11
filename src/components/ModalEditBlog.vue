@@ -8,14 +8,18 @@
             title="edit"
             class="cursor-pointer"
             @click="isPreview = false"
-            :class="{'active': !isPreview}"
-          >Edit</li>
+            :class="{ active: !isPreview }"
+          >
+            Edit
+          </li>
           <li
             title="preview"
             class="cursor-pointer"
             @click="isPreview = true"
-            :class="{'active': isPreview}"
-          >Preview</li>
+            :class="{ active: isPreview }"
+          >
+            Preview
+          </li>
           <li title="delete" class="cursor-pointer">
             <span @click="isShowModal = false">
               <i class="fas fa-times"></i>
@@ -24,7 +28,11 @@
         </ul>
       </div>
       <div class="edit-content">
-        <div class="preview overflow-x-auto" v-if="isPreview" v-html="compiledMarkdown"></div>
+        <div
+          class="preview overflow-x-auto"
+          v-if="isPreview"
+          v-html="compiledMarkdown"
+        ></div>
         <template v-else>
           <div class="title form-group">
             <label for>Title:</label>
@@ -39,7 +47,9 @@
           </div>
         </template>
         <div class="post-blog -flex -center-x">
-          <button class="btn btn-primary" @click="updateBlog()">Update Blog</button>
+          <button class="btn btn-primary" @click="updateBlog()">
+            Update Blog
+          </button>
         </div>
       </div>
     </template>

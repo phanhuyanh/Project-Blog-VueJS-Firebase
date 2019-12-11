@@ -1,4 +1,4 @@
-import ICountUp from 'vue-countup-v2';
+import ICountUp from "vue-countup-v2";
 
 export default {
   components: {
@@ -16,7 +16,7 @@ export default {
       instance.update(that.numUsers);
     },
     onReadyBlog(instance) {
-      instance.update(this.numBlogs)
+      instance.update(this.numBlogs);
     }
   }
-}
+};

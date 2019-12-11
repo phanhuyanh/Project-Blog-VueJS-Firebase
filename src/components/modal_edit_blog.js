@@ -33,7 +33,7 @@ export default {
 
       var time = { timestamp: Date.now() };
 
-      var obj = { ...this.dataProps, ...time};
+      var obj = { ...this.dataProps, ...time };
 
       store
         .updateBlog(me.uid, obj.id, obj)

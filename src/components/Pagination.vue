@@ -1,21 +1,44 @@
 <template>
   <div class="navigation" v-if="Math.ceil(listBlog / limit) > 1">
     <nav class="-flex -full-width -full-height -center-x -center-y">
-      <div class="chevron-left" :class="{'pointer-event' : $route.params.id < 2}">
-        <router-link :to="'/blog/page/' + (+$route.params.id - 1)" class="-full-width -full-height -flex">
+      <div
+        class="chevron-left"
+        :class="{ 'pointer-event': $route.params.id < 2 }"
+      >
+        <router-link
+          :to="'/blog/page/' + (+$route.params.id - 1)"
+          class="-full-width -full-height -flex"
+        >
           <span>
             <i class="fas fa-chevron-left"></i>
           </span>
         </router-link>
       </div>
       <div class="nav-page -flex">
-        <div class="page" v-for="(item, index) in createPag" :key="index" :class="{'active': $route.params.id == index + 1}">
-          <router-link :to="'/blog/page/' + (index + 1)" class="-block -text-center -full-width -full-height">{{ item }}</router-link>
+        <div
+          class="page"
+          v-for="(item, index) in createPag"
+          :key="index"
+          :class="{ active: $route.params.id == index + 1 }"
+        >
+          <router-link
+            :to="'/blog/page/' + (index + 1)"
+            class="-block -text-center -full-width -full-height"
+            >{{ item }}</router-link
+          >
         </div>
       </div>
-      <div class="chevron-right" :class="{'pointer-event' : Math.ceil(listBlog / limit) == $route.params.id}">
-        <router-link :to="'/blog/page/' + (+$route.params.id + 1)" class="-full-width -full-height -flex">
-          <span> 
+      <div
+        class="chevron-right"
+        :class="{
+          'pointer-event': Math.ceil(listBlog / limit) == $route.params.id
+        }"
+      >
+        <router-link
+          :to="'/blog/page/' + (+$route.params.id + 1)"
+          class="-full-width -full-height -flex"
+        >
+          <span>
             <i class="fas fa-chevron-right"></i>
           </span>
         </router-link>
@@ -28,25 +51,24 @@
 
 <style scoped>
 .navigation {
-    padding: 30px 0;
+  padding: 30px 0;
 }
 
 nav .chevron-left {
-    margin-right: 5px;
+  margin-right: 5px;
 }
 
 nav .chevron-right {
-   
-} 
+}
 
 .nav-page {
-    padding: 0px;
+  padding: 0px;
 }
 
 .nav-page .page {
-    width: 23px;
-    height: 20px;
-    margin-right: 5px;
+  width: 23px;
+  height: 20px;
+  margin-right: 5px;
 }
 
 .page a {
@@ -54,10 +76,10 @@ nav .chevron-right {
 }
 
 .page.active {
-    background: #181818;
+  background: #181818;
 }
 
 .page.active a {
-    color: #fff;
+  color: #fff;
 }
 </style>

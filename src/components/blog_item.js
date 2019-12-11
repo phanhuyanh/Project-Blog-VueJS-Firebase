@@ -1,5 +1,5 @@
 import store from "@/api/store.js";
-import  { bus }  from '@/main.js';
+import { bus } from "@/main.js";
 
 export default {
   props: {
@@ -16,7 +16,7 @@ export default {
       var description = this.description;
       var author_id = this.author_id;
 
-      bus.$emit('showModal', {id, title, description, author_id});
+      bus.$emit("showModal", { id, title, description, author_id });
     },
     dateFormat(timestamp) {
       var date = new Date(timestamp);

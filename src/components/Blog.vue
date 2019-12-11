@@ -1,10 +1,10 @@
 <template>
   <div class="blog">
     <div class="card">
-      <div class="card-title"><router-link :to="`/topic/` + blog.id">{{ blog.title }}</router-link></div>
-      <div class="description">
-        {{ blog.description.slice(0, 200) }}...
+      <div class="card-title">
+        <router-link :to="`/topic/` + blog.id">{{ blog.title }}</router-link>
       </div>
+      <div class="description">{{ blog.description.slice(0, 200) }}...</div>
       <div class="card-creator -flex">
         <div class="tags"></div>
         <div class="creator">
@@ -23,22 +23,22 @@
 
 <style scoped>
 .blog {
-    border-bottom: 1px solid #cacaca75;
-    padding: 15px 30px;
+  border-bottom: 1px solid #cacaca75;
+  padding: 15px 30px;
 }
 
 .card {
-  font-size: .9rem;
+  font-size: 0.9rem;
 }
 
 .card .card-title {
   margin-bottom: 5px;
 }
 
-.card .card-title a{
+.card .card-title a {
   line-height: 1.3rem;
   font-size: 1.2rem;
-  color: #07C;
+  color: #07c;
 }
 
 .card .card-title a:hover {
@@ -49,7 +49,7 @@
   margin-bottom: 5px;
 }
 
-.card .card-creator{
+.card .card-creator {
   justify-content: flex-end;
 }
 
@@ -69,5 +69,4 @@
 .card .card-creator .creator .creator-profile .creator-name {
   margin-left: 5px;
 }
-
 </style>

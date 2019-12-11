@@ -1,7 +1,7 @@
-import firebase from 'firebase';
+import firebase from "firebase";
 
 var chars = `abcdefghijkmnlopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789`;
- 
+
 const generateKey = () => {
   var strKey = "";
 
@@ -14,26 +14,32 @@ const generateKey = () => {
   }
 
   return strKey;
-}
+};
 
 const main = async () => {
+  var objKey = await firebase
+    .database()
+    .ref("storeKey")
+    .once("value")
+    .then(data => data.val());
 
-    var objKey = await firebase.database().ref("storeKey").once("value").then(data => data.val())
-    
-    var storeKey = JSON.parse(objKey.key)
-    var strKey = generateKey();
+  var storeKey = JSON.parse(objKey.key);
+  var strKey = generateKey();
 
-    do {
-        strKey = generateKey();
-    }while(storeKey.some(e => e === strKey))
+  do {
+    strKey = generateKey();
+  } while (storeKey.some(e => e === strKey));
 
-    storeKey.push(strKey);
+  storeKey.push(strKey);
 
-    await firebase.database().ref("storeKey").set({
-        key: JSON.stringify(storeKey)
-    })
+  await firebase
+    .database()
+    .ref("storeKey")
+    .set({
+      key: JSON.stringify(storeKey)
+    });
 
-    return strKey;
-}
+  return strKey;
+};
 
 export default main;
