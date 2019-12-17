@@ -16,20 +16,29 @@
 
 <script>
 export default {
-  props: {
-    p_width: String,
-    p_height: String,
-    img_prop: String
-  },
-  data: () => ({
-    img_src:
-      "https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?f=y",
-    width: 30,
-    height: 30
-  }),
-  created() {
-    if (this.img_prop) {
-      this.img_src = this.img_prop;
+    props: {
+        p_width: String,
+        p_height: String,
+        img_prop: String
+    },
+    data: () => ({
+        img_src: "https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?f=y",
+        width: 30,
+        height: 30,
+        me: {}
+    }),
+    created() {
+        if(this.img_prop) {
+            this.img_src = this.img_prop;
+        }
+       
+        this.width = this.p_width || 30;
+        this.height = this.p_height || 30;
+    },
+    watch: {
+        img_prop(newValue) {
+            this.img_src = newValue;
+        } 
     }
 
     this.width = this.p_width || 30;
