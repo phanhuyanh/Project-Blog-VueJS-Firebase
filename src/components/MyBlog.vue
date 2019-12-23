@@ -1,6 +1,5 @@
 <template>
   <div class="my-blog">
-    <modal-edit-blog ref="show_modal"></modal-edit-blog>
     <div class="my-blog-head -flex">
       <search @searchBlog="searchBlog($event)"></search>
     </div>
@@ -11,11 +10,8 @@
           <blog-item
             v-for="item in listBlogLimit"
             :key="item.id"
-            :title="item.title"
-            :description="item.description"
-            :timestamp="item.timestamp"
-            :id="item.id"
-            :author_id="item.author_id"
+            :blog="item"
+            @delBlogItem="delBlogItem"
           ></blog-item>
         </template>
         <div v-else>
@@ -29,10 +25,7 @@
         <nav class="-flex -full-width -full-height -center-x -center-y">
           <div
             class="chevron-left cursor-pointer"
-            @click="
-              --page;
-              --pageCur;
-            "
+            @click="--page;--pageCur;"
             :class="{ 'pointer-event': page == 1 }"
           >
             <div class="-full-width -full-height -flex">

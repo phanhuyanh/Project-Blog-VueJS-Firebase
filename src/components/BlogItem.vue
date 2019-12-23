@@ -1,36 +1,46 @@
 <template>
   <!-- Blog -->
   <div class="blog-item">
-    <router-link
-      :to="{ name: 'topic', params: { id: id } }"
-      class="-block -full-width -full-height"
-    >
-      <div class="title">{{ title }}</div>
-      <div class="description">{{ description }}</div>
-      <div class="creat-at">{{ dateFormat(timestamp) }}</div>
-    </router-link>
-    <div class="blog-option">
-      <ul>
-        <li title="Edit" @click="showModalEdit()">
-          <span>
-            <i class="fas fa-edit"></i>
-          </span>
-        </li>
-        <li title="Delete" @click="deleteBlog()">
-          <span>
-            <i class="fas fa-minus-circle"></i>
-          </span>
-        </li>
-      </ul>
+    <modal-edit-blog :isShowModal="showModal" :dataProps="blog" @closeShowModal="showModal = false"></modal-edit-blog>
+    <div class="blog-item" id="truth">
+      <router-link
+        :to="{ name: 'topic', params: { id: blog.id } }"
+        class="-block -full-width -full-height"
+      >
+        <div class="title">{{ blog.title }}</div>
+        <div class="description">{{ blog.description }}</div>
+        <div class="creat-at">{{ dateFormat(blog.timestamp) }}</div>
+      </router-link>
+      <div class="blog-option">
+        <ul>
+          <li title="Edit" @click="showModalEdit()">
+            <span>
+              <i class="fas fa-edit"></i>
+            </span>
+          </li>
+          <li title="Delete" @click="deleteBlog()">
+            <span>
+              <i class="fas fa-minus-circle"></i>
+            </span>
+          </li>
+        </ul>
+      </div>
     </div>
-  </div>
+  </div>  
   <!-- Blog -->
 </template>
 
 <script src="./blog_item.js"></script>
 
 <style scoped>
+
 .blog-item {
+  background: transparent;
+  overflow-y: hidden;
+  position: relative;
+}
+
+#truth.blog-item {
   transition: 0.5s all ease;
   background: #fff;
   border-radius: 5px;
@@ -38,18 +48,18 @@
   position: relative;
 }
 
-.blog-item a {
+#truth.blog-item a {
   padding: 15px;
 }
 
-.blog-item .title {
+#truth.blog-item .title {
   font-size: 22px;
   font-weight: 700;
   margin-bottom: 5px;
   line-height: 28px;
 }
 
-.blog-item .description {
+#truth.blog-item .description {
   margin-bottom: 5px;
   line-height: 24px;
   white-space: nowrap;
@@ -57,13 +67,13 @@
   overflow: hidden;
 }
 
-.blog-item:hover {
+#truth.blog-item:hover {
   transform: translateY(-8px);
   transition: 0.5s all ease;
   box-shadow: 0 4px 12px #ccc;
 }
 
-.blog-item:hover .blog-option {
+#truth.blog-item:hover .blog-option {
   top: 5px;
   transition: 0.3s all ease;
   opacity: 1;

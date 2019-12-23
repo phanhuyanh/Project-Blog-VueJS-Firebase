@@ -56,6 +56,7 @@ export default {
     },
     delBlogItem(id) {
       this.listBlog = this.listBlog.filter(e => e.id != id);
+      this.tempListBlog = this.listBlog.map(e => e);
     }
   },
   computed: {

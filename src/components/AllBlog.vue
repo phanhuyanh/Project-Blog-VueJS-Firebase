@@ -18,8 +18,6 @@ export default {
 </script>
 
 <style scoped>
-@import url("../../public/css/main.css");
-@import url("../../public/css/layout.css");
 
 #page-blog #list-blog {
   padding: 120px 0 50px 0;

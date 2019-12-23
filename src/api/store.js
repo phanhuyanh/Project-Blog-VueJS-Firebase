@@ -67,4 +67,8 @@ store.addBlog = (uid, blog) => firebase.firestore().collection("blogs").doc(uid)
 
 store.addNewBlog = (bid, blog) => firebase.firestore().collection("newBlogs").doc(bid).set(blog)
 
+store.updateNewBlog = (bid, blog) => firebase.firestore().collection("newBlogs").doc(bid).update(blog);
+
+store.delNewBlog = (bid) => firebase.firestore().collection("newBlogs").doc(bid).delete();
+
 export default store;

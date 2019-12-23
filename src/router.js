@@ -14,6 +14,7 @@ import AddBlog from "./components/AddBlog.vue";
 import Topic from "./components/Topic.vue";
 import Account from "./components/Account.vue";
 import AccBasic from "./components/AccBasic.vue";
+import AllVideo from "./components/AllVideo.vue";
 
 Vue.use(VueRouter);
 
@@ -105,7 +106,12 @@ export default new VueRouter({
           component: AccBasic
         }
       ]
-    }
+    },
+    {
+      path: "/all-video",
+      name: 'all-video',
+      component: AllVideo
+    },
   ],
   mode: "history"
 });

@@ -40,15 +40,6 @@ export default {
             this.img_src = newValue;
         } 
     }
-
-    this.width = this.p_width || 30;
-    this.height = this.p_height || 30;
-  },
-  watch: {
-    img_prop(newValue) {
-      this.img_src = newValue;
-    }
-  }
 };
 </script>
 

@@ -1,5 +1,6 @@
 <template>
   <div class="topic">
+    <zoom-img class="-hidden -none"></zoom-img>
     <div class="container">
       <header-layout></header-layout>
       <div class="topic-content">
@@ -32,7 +33,7 @@
 }
 
 .main-topic a {
-  color: #2b2bff;
+  color: #2b2bff !important;
 }
 
 .preview {
@@ -40,7 +41,4 @@
   background: #fff;
 }
 
-.preview a {
-  color: #2b2bff;
-}
 </style>

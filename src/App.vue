@@ -20,6 +20,7 @@ export default {
 };
 </script>
 
-<style >
-
+<style>
+@import url('./../public/css/main.css');
+@import url('./../public/css/layout.css');
 </style>

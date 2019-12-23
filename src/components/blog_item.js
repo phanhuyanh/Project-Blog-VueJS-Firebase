@@ -1,22 +1,27 @@
 import store from "@/api/store.js";
-import { bus } from "@/main.js";
+import ModalEditBlog  from './ModalEditBlog.vue';
+import { mapGetters } from 'vuex';
 
 export default {
   props: {
-    id: String,
-    title: String,
-    description: String,
-    timestamp: Number,
-    author_id: String
+    blog: Object
+  },
+  components: {
+    ModalEditBlog
+  },
+  data: function() {
+    return {
+      showModal: false
+    }
+  },
+  computed: {
+    ...mapGetters([
+      'getMe'
+    ])
   },
   methods: {
     showModalEdit() {
-      var id = this.id;
-      var title = this.title;
-      var description = this.description;
-      var author_id = this.author_id;
-
-      bus.$emit("showModal", { id, title, description, author_id });
+      this.showModal = true;
     },
     dateFormat(timestamp) {
       var date = new Date(timestamp);
@@ -24,19 +29,27 @@ export default {
       return `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
     },
     async deleteBlog() {
-      var me = await store.getMyUser();
+      var me = this.getMe;
 
       var r = confirm("bạn có muốn xóa không");
 
       if (r) {
-        var result = await store
-          .delBlog(me.uid, this.id)
-          .then(() => "success")
-          .catch(() => "err");
+        Promise.all([
+          store.delBlog(me.id, this.blog.id),
+          store.delNewBlog(this.blog.id)
+        ]).then(() => {
+          this.$emit('delBlogItem', this.blog.id);
+          alert('success');
+        }).catch(() => alert('Xoa that bai'));
+        // var result = await store
+        //   .delBlog(me.id, this.blog.id)
+        //   .then(() => "success")
+        //   .catch(() => "err");
 
-        if (result === "err") {
-          alert("Xóa thất bại");
-        } else this.$parent.delBlogItem(this.id);
+        // if (result === "err") {
+        //   alert("Xóa thất bại");
+        // } else this.$parent.delBlogItem(this.blog.id);
+        
       }
     }
   }

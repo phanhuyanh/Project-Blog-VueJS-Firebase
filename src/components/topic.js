@@ -1,10 +1,13 @@
 import HeaderLayout from "./HeaderLayout.vue";
 import firebase from "firebase";
 import marked from "marked";
+import ZoomImg from './ZoomImg.vue'
+
 
 export default {
   components: {
-    HeaderLayout
+    HeaderLayout,
+    ZoomImg
   },
   data: () => ({
     title: "",
@@ -28,5 +31,5 @@ export default {
     compiledMarkdown: function() {
       return marked(this.topic.description || "", { sanitize: true });
     }
-  }
+  },
 };

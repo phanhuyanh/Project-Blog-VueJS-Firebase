@@ -7,7 +7,6 @@ import store from "@/store/index.js";
 Vue.config.productionTip = false;
 
 
-export const bus = new Vue();
 
 const firebaseConfig = {
   apiKey: "AIzaSyD1bD5_b1AOlXSF3LrnWvSx1MS9mo8iAU4",

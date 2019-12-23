@@ -7,33 +7,32 @@
       <div class="notice-info" v-if="showNotice">
           <div class="list-items">
               <div class="item">
-                  <avatar></avatar>
-                  <div class="item-content">
-                      <p>Đã bình luận về bài viết LifeCycle Hook VueJS</p>
-                      <p class="time"><span></span> 2 days ago</p>
-                  </div>
+                <avatar></avatar>
+                <div class="item-content">
+                    <p>Đã bình luận về bài viết LifeCycle Hook VueJS</p>
+                    <p class="time"><span></span> 2 days ago</p>
+                </div>
               </div>
               <div class="item">
-                  <avatar p_width="30" p_height="30"></avatar>
-                  <div class="item-content">
-                      <p>Đã bình luận về bài viết LifeCycle Hook VueJS</p>
-                      <p class="time"><span></span> 2 days ago</p>
-                  </div>
+                <avatar p_width="30" p_height="30"></avatar>
+                <div class="item-content">
+                    <p>Đã bình luận về bài viết LifeCycle Hook VueJS</p>
+                    <p class="time"><span></span> 2 days ago</p>
+                </div>
+              </div>
+              <div class="item">
+                <avatar p_width="30" p_height="30"></avatar>
+                <div class="item-content">
+                  <p>Đã bình luận về bài viết LifeCycle Hook VueJS</p>
+                  <p class="time"><span></span> 2 days ago</p>
+                </div>
+              </div>
+              <div class="see-all">
+                <a href="#">See all</a>
               </div>
           </div>
-          <div class="item">
-            <avatar p_width="30" p_height="30"></avatar>
-            <div class="item-content">
-              <p>Đã bình luận về bài viết LifeCycle Hook VueJS</p>
-              <p class="time"><span></span> 2 days ago</p>
-            </div>
-          </div>
-        </div>
-        <div class="see-all">
-          <a href="#">See all</a>
         </div>
       </div>
-    </div>
     <div class="view" @click="showInfo = !showInfo">
       <avatar :img_prop="me.photoURL"></avatar>
       <div class="drop-down" v-if="me">

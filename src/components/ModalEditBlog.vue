@@ -21,7 +21,7 @@
             Preview
           </li>
           <li title="delete" class="cursor-pointer">
-            <span @click="isShowModal = false">
+            <span @click="$emit('closeShowModal')">
               <i class="fas fa-times"></i>
             </span>
           </li>
