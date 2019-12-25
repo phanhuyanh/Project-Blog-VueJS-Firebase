@@ -15,6 +15,8 @@ import Topic from "./components/Topic.vue";
 import Account from "./components/Account.vue";
 import AccBasic from "./components/AccBasic.vue";
 import AllVideo from "./components/AllVideo.vue";
+import Campain from './campain/Campain.vue';
+import Targetting from './campain/Targeting.vue';
 
 Vue.use(VueRouter);
 
@@ -112,6 +114,18 @@ export default new VueRouter({
       name: 'all-video',
       component: AllVideo
     },
+    {
+      path: '/campain',
+      name: 'campain',
+      component: Campain,
+      children: [
+        {
+          path: 'target',
+          name: 'target',
+          component: Targetting
+        }
+      ]
+    }
   ],
   mode: "history"
 });

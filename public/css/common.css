@@ -1,0 +1,174 @@
+:root {
+    --bg-campain-header: #363d4d;
+    --color-header: rgb(54, 61, 77);
+    --bd-color-group: #dfe5ed;
+    --bd-color-hover: #ccc;
+    --color-btn: #4084d3;
+    --coler-btn-hover: #3579c7;
+    --primary: #4084d3;
+    --primary-hover: #3878c1;
+    --color-invaild: #fc6f86;
+}
+
+.-layout-h {
+    display: flex;
+    flex-direction: row;
+}
+
+.-layout-v {
+    display: flex;
+    flex-direction: column;
+}
+
+.-full-width {
+    width: 100%;
+}
+
+.-full-height {
+    height: 100%;
+}
+
+.-center {
+    align-items: center;
+}
+
+.-justify-center {
+    justify-content: center;
+}
+
+.-none {
+    display: none;
+}
+
+.-flex {
+    flex: 1;
+}
+
+.target-url-edit, .target-add-button {
+    color: var(--color-btn);
+    cursor: pointer;
+    font-size: 12px;
+    width: max-content;
+}
+
+.target-url-edit:hover, .target-add-button:hover {
+    color: var(--coler-btn-hover);
+}
+
+.target-url-del-btn {
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--bd-color-group);
+    border-radius: 4px;
+    margin-left: 8px;
+    cursor: pointer;
+}
+.target-url-del-btn:hover {
+    border-color: var(--bd-color-hover);
+}
+
+.target-url-del-btn svg{
+    width: 16px;
+    height: 16px;
+    fill: var(--color-header);
+}
+
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 1000;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.modal-wrap {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: var(--bg-campain-header);
+    z-index: 900;
+    opacity: .8;
+}
+
+.modal-content {
+    width: 680px;
+    position: relative;
+    margin: 36px auto 18px;
+    transform: translateY(-1000px);
+    transition: .3s all ease-in-out;
+}
+
+.modal-content.fade {
+    transform: translateY(0);
+    transition: .3s all ease-in-out;
+}
+
+.btn-outline-default {
+    border-color: var(--bd-color-group);
+    background: #fff;
+}
+
+.btn-outline-default:hover {
+    border-color: var(--bd-color-hover);
+}
+
+.btn-primary {
+    background-color: var(--primary);
+    border-color: var(--primary);
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-hover);
+    border-color: var(--primary-hover)
+}
+
+.btn {
+    font-size: 14px;
+    padding: 8px 22.5px;
+    line-height: 1.5;
+    border-radius: 4px;
+    white-space: nowrap;
+    vertical-align: middle;
+    user-select: none;
+    cursor: pointer;
+    outline: 0;
+}
+
+.modal-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 12px;
+    height: 12px;
+    cursor: pointer;
+    opacity: .5;
+    transition: transform .3s, opacity .2s;
+    display: flex;
+}
+
+.modal-close:hover {
+    transform: rotate(90deg);
+    opacity: 1;
+}
+
+.modal-windown {
+    opacity: 0;
+    transition: .3s all ease-in-out;
+}
+
+.modal-windown.fade {
+    opacity: 1;
+}
+
+.mess-invaid {
+    color: var(--color-invaild);
+    font-size: 12px;
+    line-height: 1.6;
+    margin-top: 5px;
+}

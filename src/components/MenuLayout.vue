@@ -5,6 +5,7 @@
         <li><router-link to="/">Home</router-link></li>
         <li><router-link to="/all-video">Video</router-link></li>
         <li><router-link to="/blog/page/1">Blog</router-link></li>
+        <li><router-link to="/campain">Campain</router-link></li>
       </ul>
     </nav>
   </div>
