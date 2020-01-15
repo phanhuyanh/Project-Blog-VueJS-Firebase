@@ -158,7 +158,6 @@
 }
 
 .modal-windown {
-    opacity: 0;
     transition: .3s all ease-in-out;
 }
 
@@ -171,4 +170,149 @@
     font-size: 12px;
     line-height: 1.6;
     margin-top: 5px;
+}
+
+.target-scheduler-group {
+    margin-bottom: 15px;
+}
+
+.target-group {
+    margin-bottom: 30px;
+}
+
+.target-scheduler-group {
+    border: 1px solid #DADCE0;
+    border-radius: 4px;
+    min-height: 96px;
+    padding: 20px 30px;
+    cursor: pointer;
+}
+
+.target-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #000000;
+}
+
+.target-main-head {
+    font-size: 16px;
+    line-height: 24px;
+    margin-bottom: 5px;
+}
+
+.target-main {
+    color: #000000;
+}
+
+.target-main-content {
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.target-del {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all .2s;
+    opacity: .7;
+}
+
+.target-del:hover {
+    transform: rotate(90deg);
+    opacity: 1;
+}
+
+.target-scheduler {
+    margin-top: 5px;
+}
+
+.target-main-content strong {
+    color: #ED5A29;
+}
+
+.btn-orange {
+    background: #ED5A29;
+    border-color: #ED5A29;
+    color: #fff;
+}
+
+.modal-main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.modal-scheduler {
+    width: 880px;
+    background: #fff;
+    color: #000000;
+    padding: 21px 30px;
+    box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1), 0px 1px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    position: relative;
+    overflow: hidden;
+    height: 468px;
+}
+
+.modal-scheduler-title {
+    font-size: 24px;
+    line-height: 32px;
+    text-align: center;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.target-edit {
+    border: 1px solid #5F6369;
+    border-radius: 100px;
+    font-size: 16px;
+    line-height: 24px;
+    padding: 5px 15px;
+}
+
+.target-add {
+    width: 36px;
+    height: 36px;
+    background: #ED5A29;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.target-operation {
+    width: 106px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-scheduler-close {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: .2s all ease-in-out;
+    opacity: .7;
+}
+
+.modal-scheduler-close:hover {
+    opacity: 1;
+    transform: rotate(90deg);
+}
+
+.modal-scheduler-over {
+    transition: .5s all ease-in-out;
+}
+
+.modal-scheduler-over.hidden {
+    transform: translateX(-100%);
+    transition: .5s all ease-in-out;
 }
